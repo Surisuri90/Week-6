@@ -1,12 +1,14 @@
-let express = require("express");
+let express = require('express');
 let app = express();
 
-app.get('/', (req, res) => {
-    res.send("root page");
+app.get('/',(request, response)=> {
+    response.send("hello");
 })
 
-app.listen(3000, () => {
-    console.log("localhost: 3000");
+app.get('/about',(request,response) => {
+    response.send("this is an about page");
 })
 
-app.use('/Migratory-Bird', express.static('public'));
+app.listen(3000,()=> {
+    console.log("app is listening at localhost:3000");
+})
