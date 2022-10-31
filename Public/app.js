@@ -1,61 +1,55 @@
-window.addEventListener('load', function () {
+window.addEventListener('load', function (){
     console.log('page is loaded');
 
-    fetch("https://disneyy.co/api/v2/disney?offset=6&limit=0")
-    .then(response => response.json())
-    .then(data => {
-        let disneyArray = data.results;
-        let randomNumber = Math.floor(Math.random()*disneyArray.length);
+    let button = document.getElementById('bird-input');
 
-        let nameElement = document.getElementById('disney-name');
-        nameElement.innerHTML = disneyArray[randomNumber].name;
-    })
+    let button.addEventListener(('onchange'), function() {
+        let inputText = document.getElementById('disney-input').value;
+        console.log("This is clicked.");
 
-    let button = document.getElementById('disney-button');
-    button.addEventListener('click', function() {
-        let inputText = document.getElementById("disney-input").value;
+        fetch('app.json')
+            .then(response => response.json())
+            .then(data => {
+                let headingElement = document.getElementById('d-name');
+                
+                console.log("input text is ", inputText);
+                // console.log("This is my ", data);
+                // console.log("This is the size of my json: ", data.length);
+                
+                for(let i = 0; i < data.length; i++){
+                    // console.log(data[i].name);
+                    if (data[i].name === inputText){
+                        console.log("It's a match!");
 
-        let API_URL = "https://disneyy.co/api/v2/disney/" +  inputText;
-        fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
+                        //What happens if it's a match
+                        let imageElement = document.getElementById('d-img');
+                        imageElement.src = data[i].url;
 
-            //populating the info
-            let headingElement = document.getElementById('d-name');
-            headingElement.innerHTML = data.name;
-
-            let weightElement = document.getElementById('d-weight');
-            weightElement.innerHTML = data.weight;
-
-            let imageElement = document.getElementById('d-img');
-            imageElement.src = data.sprites.front_default;
-
-            let typeElement = document.getElementById('d-type');
-            let types = data.types;
-            console.log(data.types); //moltres
-            for(let i=0; i< data.types.length;i++) {
-                let elt = document.createElement('p');
-                elt.innerHTML = data.types[i].type.name;
-                typeElement.appendChild(elt);
-            }
-
-
-        })
-        .catch(err => {
-            console.log("error is: " + err);
-            let headingElement = document.getElementById('d-name');
-            headingElement.innerHTML = "Could not find Charactor! Let's try again.";
-
-            let weightElement = document.getElementById('d-weight');
-            weightElement.innerHTML = "";
-
-            let imageElement = document.getElementById('d-img');
-            imageElement.src = "";
+                    } else {
+                        // console.log("It is not a match.");
+                        //What happen if it's not!
+                    }
+                }
+                //headingElement.innerHTML = birdArray[inputText].name;
+            })
+        
+        let frame = 0
+        let gonextButton = document.getElementById('go_next');
+        gonextButton.addEventListener('click', function () {
+            console.log('Woodi');
+            fetch('birdtry.json')
+                .then(Response => Response.json())
+                .then(data => {
+                    console.log(data);
+                    let birdArray = data.results;
+                    let imageElement = document.getElementById('imgp2');
+                    imageElement.src = birdArray[frame].url;
+                })
+            frame = (frame + 1) % 5;
         })
 
     })
+    const cursor = document.querySelector('.cursor');
 
-})
-
+})})
 
