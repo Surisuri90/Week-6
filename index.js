@@ -9,7 +9,7 @@ app.use(express.static('public'));
 let data = {
     " Friut Tarts": [
         {
-            "Type": "Apple",
+            "Type": "Apple Tart",
             "cost" : 1
         },
         {
@@ -17,7 +17,7 @@ let data = {
             "cost" : 2
         },  
         {
-            "Tpye" : "Milk Tart",
+            "Tpye" : "Orange Tart",
             "cost" : 3
         },
         {
