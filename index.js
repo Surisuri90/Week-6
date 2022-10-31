@@ -8,37 +8,37 @@ app.use(express.static('public'));
 
 //Pizza Data
 let data = {
-    "disney charactors": [
+    " Tart Type": [
         {
-            "name": "Buzz Lightyear",
-            "rank" : 1
+            "Type": "Apple",
+            "cost" : 1
         },
         {
-            "name": "Woodi",
-            "rank" : 2
+            "Tpye": "Watermelon Tart",
+            "cost" : 2
         },  
         {
-            "name" : "Jessi",
-            "rank" : 3
+            "Tpye" : "Milk Tart",
+            "cost" : 3
         },
         {
-            "name": "Winnie",
-            "rank" : 4
+            "Tpye": "Banana Tart",
+            "cost" : 2
         }
          {
-            "name": "Mickey Mouse",
-            "rank" : 5
+            "Tpye": "Mango Tart",
+            "cost" : 3
         } {
-            "name": "Minnie Mouse",
-            "rank" : 6
+            "Tpye": "Charry",
+            "cost" : 3
         }
     ]
 };
 
 //Random Data
 app.get('/random', (request, response) => {
-    let randomNum = Math.floor(Math.random() * data.disney.length);
-    let randomdisney = data.disney[randomNum];
+    let randomNum = Math.floor(Math.random() * data.tart.length);
+    let randomdisney = data.tart[randomNum];
     console.log(randomDisney);
     response.json(randomDisney);
 })
