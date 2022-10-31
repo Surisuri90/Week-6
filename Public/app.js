@@ -1,7 +1,7 @@
 window.addEventListener('load', function (){
     console.log('page is loaded');
 
-    let button = document.getElementById('bird-input');
+    let button = document.getElementById("disney-input');
 
     let button.addEventListener(('onchange'), function() {
         let inputText = document.getElementById('disney-input').value;
