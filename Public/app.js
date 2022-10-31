@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
     console.log('page is loaded');
-    //https://pokeapi.co/api/v2/pokemon?limit=151&offset=0
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
+
+    fetch("https://disneyy.co/api/v2/disney?offset=6&limit=0")
     .then(response => response.json())
     .then(data => {
         let disneyArray = data.results;
@@ -15,7 +15,7 @@ window.addEventListener('load', function () {
     button.addEventListener('click', function() {
         let inputText = document.getElementById("disney-input").value;
 
-        let API_URL = "https://disney.co/api/v2/disney/" +  inputText;
+        let API_URL = "https://disneyy.co/api/v2/disney/" +  inputText;
         fetch(API_URL)
         .then(response => response.json())
         .then(data => {
@@ -44,13 +44,13 @@ window.addEventListener('load', function () {
         })
         .catch(err => {
             console.log("error is: " + err);
-            let headingElement = document.getElementById('p-name');
-            headingElement.innerHTML = "Could not find pokemon! try again.";
+            let headingElement = document.getElementById('d-name');
+            headingElement.innerHTML = "Could not find Charactor! Let's try again.";
 
-            let weightElement = document.getElementById('p-weight');
+            let weightElement = document.getElementById('d-weight');
             weightElement.innerHTML = "";
 
-            let imageElement = document.getElementById('p-img');
+            let imageElement = document.getElementById('d-img');
             imageElement.src = "";
         })
 
