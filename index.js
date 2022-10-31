@@ -1,60 +1,48 @@
-let express = require("express");
+
+//Server with Express
+let express = require('express');
 let app = express();
 
-let signs = {
-    "data" : [
-        {
-            name: "aries",
-            info: "(March 21 – April 19) – This zodiac birthday sign with Mars as its ruler represents courage, strength, independence, competition and enthusiasm."
-        },
-        {
-            name: "taurus",
-            info: "(April 20 – May 20) – Venus is the ruling sign and this zodiac sign is symbolic of calmness, peace, focus, patience and possessiveness."
-        },
-        {
-            name: "gemini",
-            info: "(May 21 – June 20) – Mercury is the ruler of this sun sign and people of this sign are joyful, pleasant, charming and adaptable."
-        }
+//Serve files from the "public" folder
+app.use(express.static('public'));
 
+//Pizza Data
+let data = {
+    "disney charactors": [
+        {
+            "name": "Buzz Lightyear",
+            "rank" : 1
+        },
+        {
+            "name": "Woodi",
+            "rank" : 12
+        },  
+        {
+            "name" : "Jessi",
+            "rank" : 3
+        },
+        {
+            "name": "Winnie",
+            "rank" : 4
+        }
+         {
+            "name": "Mickey Mouse",
+            "rank" : 5
+        } {
+            "name": "Minnie Mouse",
+            "rank" : 6
+        }
     ]
-}
+};
 
-app.get('/', (req,res)=> {
-    res.send("this is the root page");
-})
-
-app.get('/about', (req,res)=> {
-    res.send("this is the page that will contain info about the project");
-})
-
-app.get('/signs', (req,res)=> {
-    res.json(signs);
-})
-
-app.get('/signs/:sign', (req,res)=> {
-    console.log(req.params.sign);
-    let user_sign = req.params.sign;
-    let user_obj;
-    for(let i=0;i<signs.data.length;i++) {
-        if(user_sign == signs.data[i].name) {
-            user_obj = signs.data[i];
-            
-        }
-    }
-    console.log(user_obj);
-    if(user_obj) {
-        res.json(user_obj);
-    } else {
-        res.json({status: "info not present"});
-    }
-})
-
-app.get('/test', (req,res) => {
-    // console.log(req)
-    console.log(req.query.a)
-    res.send('hello')
+//Random Data
+app.get('/random', (request, response) => {
+    let randomNum = Math.floor(Math.random() * data.disney.length);
+    let randomdisney = data.disney[randomNum];
+    console.log(randomDisney);
+    response.json(randomDisney);
 })
 
 app.listen(3000, ()=> {
-    console.log("listening at localhost:3000");
+    console.log("app is listening at localhost:3000");
 })
