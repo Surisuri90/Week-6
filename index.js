@@ -6,9 +6,8 @@ let app = express();
 //Serve files from the "public" folder
 app.use(express.static('public'));
 
-//Pizza Data
 let data = {
-    " Tart Type": [
+    " Friut Tarts": [
         {
             "Type": "Apple",
             "cost" : 1
@@ -38,9 +37,9 @@ let data = {
 //Random Data
 app.get('/random', (request, response) => {
     let randomNum = Math.floor(Math.random() * data.tart.length);
-    let randomdisney = data.tart[randomNum];
-    console.log(randomDisney);
-    response.json(randomDisney);
+    let randomtart = data.tart[randomNum];
+    console.log(randomTart);
+    response.json(randomTart);
 })
 
 app.listen(3000, ()=> {
