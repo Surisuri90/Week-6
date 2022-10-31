@@ -15,7 +15,7 @@ let data = {
         },
         {
             "name": "Woodi",
-            "rank" : 12
+            "rank" : 2
         },  
         {
             "name" : "Jessi",
