@@ -1,7 +1,6 @@
 window.addEventListener('load', ()=>{
 
-    //Request json file
-    fetch("app.json")
+    fetch("quotes.json")
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -10,13 +9,11 @@ window.addEventListener('load', ()=>{
         let randomQuote = quotes[randomNum];
         document.getElementById("tart-quote").innerHTML = '"' + randomQuote + '"';
     });
-
-    //Request random pizza
-    let pizzaButton = document.getElementById("tart-button");
-    pizzaButton.addEventListener("click", () => {
+    
+    let tartButton = document.getElementById("tart-button");
+    tartButton.addEventListener("click", () => {
         console.log("Button clicked!");
 
-        //Request random pizza object
         fetch("/random")
         .then(response => response.json())
         .then(data => {
